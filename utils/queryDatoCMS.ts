@@ -13,6 +13,7 @@ export default async function queryDatoCMS<
     token: isDraft
       ? process.env.DATOCMS_DRAFT_CONTENT_CDA_TOKEN!
       : process.env.DATOCMS_PUBLISHED_CONTENT_CDA_TOKEN!,
+      environment: process.env.DATOCMS_ENVIRONMENT,
     excludeInvalid: true,
     includeDrafts: isDraft,
     ...(isDraft
