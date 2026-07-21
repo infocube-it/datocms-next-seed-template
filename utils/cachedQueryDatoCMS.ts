@@ -24,6 +24,7 @@ export async function cachedQueryDatoCMS<
 ): Promise<TResult> {
   return executeQuery(document, {
     token: process.env.DATOCMS_PUBLISHED_CONTENT_CDA_TOKEN!,
+    environment: process.env.DATOCMS_ENVIRONMENT,
     excludeInvalid: true,
     variables,
   });

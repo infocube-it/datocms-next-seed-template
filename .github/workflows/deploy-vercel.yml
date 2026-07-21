@@ -1,0 +1,21 @@
+name: Deploy to Vercel
+
+on:
+  push:
+    branches:
+      - master
+      - develop
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy Production (master)
+        if: github.ref == 'refs/heads/master'
+        run: |
+          curl -X POST "${{ secrets.DATOCMS_DEPLOY_HOOK_PRODUCTION}}"
+
+      - name: Deploy Staging (develop)
+        if: github.ref == 'refs/heads/develop'
+        run: |
+          curl -X POST "${{ secrets.DATOCMS_DEPLOY_HOOK_STAGING}}"
